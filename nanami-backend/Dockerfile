@@ -18,7 +18,7 @@ RUN apt-get update \
  && apt-get install -y --no-install-recommends python3 make g++ \
  && rm -rf /var/lib/apt/lists/*
 
-COPY backend/package.json backend/package-lock.json ./
+COPY nanami-backend/package.json nanami-backend/package-lock.json ./
 RUN npm ci --omit=dev && npm cache clean --force
 
 # ---------- 3. imagem final ----------
@@ -32,8 +32,8 @@ ENV NODE_ENV=production \
     STATIC_DIR=/app/public
 
 COPY --from=backend-deps /app/node_modules ./node_modules
-COPY backend/package.json ./
-COPY backend/src ./src
+COPY nanami-backend/package.json ./
+COPY nanami-backend/src ./src
 COPY --from=frontend /app/dist ./public
 
 # O processo roda como usuário sem privilégios. Os volumes /data e /uploads

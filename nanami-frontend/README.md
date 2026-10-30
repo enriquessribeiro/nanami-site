@@ -12,7 +12,7 @@ npm run build   # gera dist/index.html e dist/admin.html
 npm run lint
 ```
 
-A API precisa estar rodando em `http://localhost:3001` (`cd ../backend && npm run dev`).
+A API precisa estar rodando em `http://localhost:3001` (`cd ../nanami-backend && npm run dev`).
 
 ## Organização
 

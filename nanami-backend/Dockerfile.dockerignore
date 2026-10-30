@@ -4,8 +4,8 @@
 **/.git
 **/.gitignore
 nanami-frontend/dist
-backend/data
-backend/uploads
-backend/.env
+nanami-backend/data
+nanami-backend/uploads
+nanami-backend/.env
 **/*.md
 Nanami – Identidade visual.html
