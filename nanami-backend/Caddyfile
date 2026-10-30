@@ -1,0 +1,21 @@
+# {$DOMAIN} vem do compose. Com "localhost" o Caddy usa a CA interna (o
+# navegador avisa que o certificado não é confiável — normal em teste local).
+{$DOMAIN} {
+	encode zstd gzip
+
+	# O app já responde /api; o Caddy só faz TLS, compressão e cabeçalhos.
+	reverse_proxy app:3001
+
+	header {
+		# O site é HTTPS-only; o navegador lembra disso por 1 ano.
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+		-Server
+	}
+
+	log {
+		output stdout
+		format console
+	}
+}

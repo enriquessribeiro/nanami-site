@@ -1,0 +1,49 @@
+@import '../styles/tailwind.css';
+
+/*
+ * Painel admin: mesma paleta da loja, mas tipografia e densidade mais
+ * "ferramenta" — fundo neutro, tabelas compactas, nada de animação.
+ */
+:root {
+  --bg: #fbf3ea;
+  --surface: #ffffff;
+  --surface-soft: #fdf8f2;
+  --text: #3f2c24;
+  --muted: #7c6455;
+  --line: #e6d3bf;
+  color-scheme: light;
+}
+
+@layer base {
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-estrela);
+    outline-offset: 2px;
+  }
+}
+
+/* Emoji depende da fonte do sistema; Fredoka/Nunito não trazem glifos. */
+.emoji {
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+}

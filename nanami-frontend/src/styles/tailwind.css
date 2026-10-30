@@ -1,0 +1,48 @@
+/* =========================================================
+   Nanami — tema Tailwind
+   Tokens do guia de identidade visual.
+   ========================================================= */
+
+@import 'tailwindcss';
+
+/* Paleta fixa da marca + tipografia + raios + sombras. */
+@theme {
+  --color-cacau: #5b4034;
+  --color-ouro: #b89a78;
+  --color-creme: #fff6ec;
+  --color-pessego: #fadcc4;
+  --color-rosa: #f5a3b5;
+  --color-laranja: #f09a4b;
+  --color-estrela: #ffd64a;
+  --color-acao: #e8607f;
+
+  --font-display: 'Fredoka', 'Trebuchet MS', sans-serif;
+  --font-body: 'Nunito', 'Segoe UI', sans-serif;
+
+  --radius-card: 26px;
+  --radius-img: 18px;
+
+  --shadow-soft: 0 22px 48px -30px rgb(91 64 52 / 0.55);
+  --shadow-lift: 0 16px 34px -22px rgb(91 64 52 / 0.5);
+
+  --animate-blink: blink 6s infinite;
+  --animate-twinkle: twinkle 5s ease-in-out infinite;
+  --animate-drop-in: dropIn 0.22s ease both;
+  --animate-fade-in: fadeIn 0.2s ease both;
+  --animate-slide-in: slideIn 0.26s cubic-bezier(0.22, 0.8, 0.3, 1) both;
+  --animate-rise: rise 0.24s ease both;
+}
+
+/*
+ * Tokens semânticos. `inline` é obrigatório aqui: o utilitário passa a usar
+ * var(--bg) diretamente, então a troca de valores no dark mode continua
+ * funcionando sem duplicar classes `dark:` em cada elemento.
+ */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-soft: var(--surface-soft);
+  --color-ink: var(--text);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+}

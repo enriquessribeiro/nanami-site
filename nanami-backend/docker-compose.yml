@@ -1,0 +1,68 @@
+# Nome fixo do projeto: evita virar "backend" nos nomes de container/rede.
+name: nanami
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: backend/Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      DATA_DIR: /data
+      UPLOAD_DIR: /uploads
+      STATIC_DIR: /app/public
+      # Atrás do Caddy: confiar no X-Forwarded-For para o IP do rate limit.
+      TRUST_PROXY: '1'
+      PUBLIC_ORIGIN: ${PUBLIC_ORIGIN:-https://localhost}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@nanami.com.br}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
+    volumes:
+      # Mantém o banco e as fotos entre deploys/restarts. Sem isso, cada
+      # rebuild começa do zero (e é o erro clássico de SQLite em container).
+      - nanami_data:/data
+      - nanami_uploads:/uploads
+    expose:
+      - '3001'
+    # Acesso direto só no loopback da máquina (útil para testar sem Caddy).
+    # O tráfego público entra pelo Caddy, na 443.
+    ports:
+      - '127.0.0.1:3001:3001'
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'node',
+          '-e',
+          "fetch('http://127.0.0.1:3001/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 15s
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      app:
+        # Só sobe o proxy quando a API responde /api/health; evita 502 no
+        # primeiro acesso e corrida de DNS entre os containers.
+        condition: service_healthy
+    environment:
+      DOMAIN: ${DOMAIN:-localhost}
+    ports:
+      - '80:80'
+      - '443:443'
+      - '443:443/udp'
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  nanami_data:
+  nanami_uploads:
+  caddy_data:
+  caddy_config:
