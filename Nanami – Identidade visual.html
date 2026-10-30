@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nanami – Identidade visual para o site</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --cacau:#5B4034;--ouro:#B89A78;--creme:#FFF6EC;--pessego:#FADCC4;--rosa:#F5A3B5;--laranja:#F09A4B;--estrela:#FFD64A;
+  --bg:#FFF6EC;--surface:#FFFFFF;--text:#4A3329;--muted:#8A6F60;--line:#EBD5C0;--accent:#E8607F;--accent-ink:#FFFFFF;
+  --f-display:'Fredoka','Trebuchet MS',sans-serif;--f-body:'Nunito','Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2A1D17;--surface:#3A2A22;--text:#FBEBDD;--muted:#CDB09C;--line:#55402F;--accent:#F5A3B5;--accent-ink:#3A1F28}}
+:root[data-theme="dark"]{--bg:#2A1D17;--surface:#3A2A22;--text:#FBEBDD;--muted:#CDB09C;--line:#55402F;--accent:#F5A3B5;--accent-ink:#3A1F28}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.6 var(--f-body)}
+main{max-width:920px;margin:0 auto;padding:32px 20px 80px}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;line-height:1.15;margin:0}
+h1{font-size:clamp(40px,8vw,72px);letter-spacing:.01em}
+h2{font-size:30px;margin-bottom:8px}
+h3{font-size:20px;margin-bottom:6px}
+p{margin:0 0 12px;max-width:62ch}
+section{padding:48px 0;border-top:2px dashed var(--line)}
+.muted{color:var(--muted)}
+.hero{padding:24px 0 48px;position:relative}
+.hero .stars{font-size:28px;color:var(--estrela);letter-spacing:6px}
+.cats{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+.cat{width:84px;height:68px;border-radius:50% 50% 46% 46%;position:relative}
+.cat::before,.cat::after{content:"";position:absolute;top:-12px;width:26px;height:26px;border-radius:6px 50% 0 50%;background:inherit}
+.cat::before{left:6px;transform:rotate(-8deg)}.cat::after{right:6px;transform:rotate(98deg)}
+.cat i{position:absolute;top:30px;width:7px;height:9px;border-radius:50%;background:var(--cacau)}
+.cat i:nth-child(1){left:22px}.cat i:nth-child(2){right:22px}
+.cat b{position:absolute;top:44px;width:14px;height:8px;border-radius:50%;background:#F58BA1;opacity:.7}
+.cat b:nth-child(3){left:10px}.cat b:nth-child(4){right:10px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+.sw{border-radius:22px;overflow:hidden;background:var(--surface);border:2px solid var(--line)}
+.sw div{height:84px}.sw p{margin:0;padding:10px 14px 12px;font-size:14px;line-height:1.35}
+.sw strong{font-family:var(--f-display);font-weight:500;font-size:16px;display:block}
+.row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:16px 0}
+.btn{font:500 17px var(--f-display);border:0;border-radius:999px;padding:12px 26px;cursor:pointer;background:var(--accent);color:var(--accent-ink);min-height:44px}
+.btn.alt{background:var(--cacau);color:var(--creme)}
+.btn.ghost{background:transparent;color:var(--text);box-shadow:inset 0 0 0 2px var(--cacau)}
+.btn:focus-visible,.seg button:focus-visible{outline:3px solid var(--estrela);outline-offset:3px}
+.seg{display:inline-flex;background:var(--pessego);border-radius:999px;padding:4px}
+.seg button{font:500 16px var(--f-display);border:0;background:transparent;color:#5B4034;border-radius:999px;padding:8px 20px;cursor:pointer;min-height:40px}
+.seg button[aria-pressed="true"]{background:var(--cacau);color:var(--creme)}
+.tag{display:inline-block;font:500 14px var(--f-display);padding:3px 12px;border-radius:999px;background:var(--estrela);color:#4A3329}
+.tag.rosa{background:var(--rosa)}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:26px;padding:12px;width:230px}
+.card .ph{height:150px;border-radius:18px;background:var(--pessego);display:grid;place-items:center;font-size:54px}
+.card h3{font-size:18px;margin:10px 4px 2px}
+.price{font:600 20px var(--f-display);margin:0 4px}
+.price small{font:400 13px var(--f-body);color:var(--muted)}
+.type-s{border:2px solid var(--line);border-radius:22px;padding:20px;background:var(--surface);margin-bottom:14px}
+.cols{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.box{border:2px solid var(--line);border-radius:22px;padding:18px;background:var(--surface)}
+.box.ok{border-color:#7DB88A}.box.no{border-color:#E08A7A}
+.box ul{margin:8px 0 0;padding-left:20px}
+.wire{display:grid;gap:8px;max-width:420px;font:500 14px var(--f-display)}
+.wire div{border:2px dashed var(--ouro);border-radius:14px;padding:10px 12px;background:var(--surface)}
+pre{background:#3A2A22;color:#FBEBDD;padding:18px;border-radius:20px;overflow-x:auto;font:14px/1.55 ui-monospace,Menlo,monospace;margin:0}
+.scroll{overflow-x:auto}
+</style>
+</head>
+<body>
+<main>
+
+<header class="hero">
+  <div class="stars" aria-hidden="true">★ ✦ ★</div>
+  <h1>Nanami<br><span class="muted" style="font-size:.4em">Atacado &amp; Varejo</span></h1>
+  <p style="margin-top:16px">Guia de identidade visual para o desenvolvimento do site. Fofa, quente e organizada: a vibe de uma loja onde cada prateleira tem um achado.</p>
+  <div class="cats" aria-hidden="true">
+    <div class="cat" style="background:#F9C9D2"><i></i><i></i><b></b><b></b></div>
+    <div class="cat" style="background:#F2A054"><i></i><i></i><b></b><b></b></div>
+    <div class="cat" style="background:#F8D2B6"><i></i><i></i><b></b><b></b></div>
+    <div class="cat" style="background:#FCE6A0"><i></i><i></i><b></b><b></b></div>
+  </div>
+</header>
+
+<section>
+  <h2>Conceito</h2>
+  <p>A fachada define tudo: letras marrons largas e elegantes, um ursinho em linha dourada e quatro gatinhos pastéis com bochechas rosadas e estrelinhas amarelas. O site herda isso em duas camadas: <strong>base calma e quente</strong> (creme, cacau, madeira clara) e <strong>personalidade fofa</strong> concentrada nos gatinhos, estrelas e formas arredondadas.</p>
+  <div class="cols">
+    <div class="box"><h3>Fofa</h3><p class="muted">Cantos bem redondos, bochechas, estrelas. Nunca infantil demais: o público compra para revender.</p></div>
+    <div class="box"><h3>Aconchegante</h3><p class="muted">Tons de madeira e papel craft, como as prateleiras da loja.</p></div>
+    <div class="box"><h3>Abastecida</h3><p class="muted">Muito produto, bem organizado. Grades densas e fotos reais da loja.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Paleta</h2>
+  <p>Cores tiradas direto da fachada. Marrom e creme sustentam a leitura; rosa, laranja e amarelo são destaque.</p>
+  <div class="grid">
+    <div class="sw"><div style="background:#5B4034"></div><p><strong>Cacau #5B4034</strong>Texto, logo, botão secundário</p></div>
+    <div class="sw"><div style="background:#B89A78"></div><p><strong>Ouro-bege #B89A78</strong>Ursinho, linhas, ícones</p></div>
+    <div class="sw"><div style="background:#FFF6EC"></div><p><strong>Creme #FFF6EC</strong>Fundo principal</p></div>
+    <div class="sw"><div style="background:#FADCC4"></div><p><strong>Pêssego #FADCC4</strong>Fundos de card, seções</p></div>
+    <div class="sw"><div style="background:#F5A3B5"></div><p><strong>Rosa gatinho #F5A3B5</strong>Destaques, tags, favoritos</p></div>
+    <div class="sw"><div style="background:#F09A4B"></div><p><strong>Laranja gato #F09A4B</strong>Promoções, selos</p></div>
+    <div class="sw"><div style="background:#FFD64A"></div><p><strong>Estrela #FFD64A</strong>Ícones, “novo”, brilho</p></div>
+    <div class="sw"><div style="background:#E8607F"></div><p><strong>Rosa ação #E8607F</strong>Botão principal (contraste)</p></div>
+  </div>
+  <p class="muted" style="margin-top:14px">Regra de contraste: texto sempre em cacau sobre claro, ou creme sobre cacau. Amarelo e rosa-claro nunca levam texto branco. O botão principal usa o rosa mais escuro com texto branco.</p>
+</section>
+
+<section>
+  <h2>Tipografia</h2>
+  <p>Duas famílias, ambas gratuitas no Google Fonts. Títulos arredondados que conversam com os gatinhos; texto limpo e legível em celular.</p>
+  <div class="type-s">
+    <p class="muted" style="margin:0">Fredoka 500, títulos e preços</p>
+    <h1 style="font-size:48px">Bolsas, laços e fofuras</h1>
+    <h2 style="margin-top:12px">Garrafas para o dia a dia</h2>
+    <h3>Pelúcias a partir de R$ 12,90</h3>
+  </div>
+  <div class="type-s">
+    <p class="muted" style="margin:0">Nunito 400/600/700, texto, menus e formulários</p>
+    <p style="margin-top:8px">Compre no varejo ou monte seu pedido de atacado com preço especial por quantidade. Entregamos para todo o Brasil e você acompanha tudo pelo WhatsApp.</p>
+  </div>
+  <p class="muted">Escala sugerida (mobile / desktop): H1 40 / 64 px, H2 28 / 36, H3 20 / 24, corpo 16 / 17, legenda 13 / 14. Linhas de texto com no máximo 65 caracteres.</p>
+</section>
+
+<section>
+  <h2>Logo</h2>
+  <p>Use a fachada como referência: ursinho em linha ouro-bege sobre a palavra <strong>NANAMI</strong> em marrom, com “Atacado &amp; Varejo” em letras menores e espaçadas. Peça o vetor (SVG) ao cliente ou redesenhe a partir da foto.</p>
+  <div class="cols">
+    <div class="box ok"><h3>Pode</h3><ul><li>Logo em cacau sobre creme ou pêssego</li><li>Logo em creme sobre cacau</li><li>Ursinho sozinho como favicon e avatar</li><li>Espaço livre igual à altura do “N” ao redor</li></ul></div>
+    <div class="box no"><h3>Evitar</h3><ul><li>Logo sobre fotos sem fundo sólido</li><li>Rosa ou amarelo nas letras</li><li>Esticar ou girar o logo</li><li>Colocar os gatinhos colados nas letras</li></ul></div>
+  </div>
+</section>
+
+<section>
+  <h2>Formas e componentes</h2>
+  <p>Tudo é arredondado. Cards com raio grande, botões em formato de pílula, bordas de 2 px em tom de madeira clara. Sem sombras pesadas: uma borda quente já separa o conteúdo.</p>
+
+  <h3 style="margin-top:20px">Botões</h3>
+  <div class="row">
+    <button class="btn">Adicionar ao carrinho</button>
+    <button class="btn alt">Pedir no atacado</button>
+    <button class="btn ghost">Ver detalhes</button>
+  </div>
+
+  <h3 style="margin-top:20px">Alternador atacado / varejo</h3>
+  <p class="muted">Peça central do site: o visitante escolhe como comprar e os preços da página mudam.</p>
+  <div class="seg" id="seg" role="group" aria-label="Tipo de compra">
+    <button aria-pressed="true" data-m="v">Varejo</button>
+    <button aria-pressed="false" data-m="a">Atacado</button>
+  </div>
+
+  <h3 style="margin-top:24px">Card de produto</h3>
+  <div class="row" style="align-items:flex-start">
+    <div class="card">
+      <div class="ph" aria-hidden="true">🧸</div>
+      <h3>Pelúcia urso grande</h3>
+      <span class="tag">novo</span> <span class="tag rosa">fofo</span>
+      <p class="price" id="preco" style="margin-top:6px">R$ 39,90 <small>unidade</small></p>
+      <p class="muted" id="obs" style="font-size:14px;margin:2px 4px 8px">Compre 1 ou mais</p>
+      <button class="btn" style="width:100%">Adicionar</button>
+    </div>
+    <div style="flex:1;min-width:240px">
+      <p><strong>Regras do card</strong></p>
+      <ul style="margin:0;padding-left:20px">
+        <li>Foto quadrada com cantos de 18 px, fundo pêssego enquanto carrega</li>
+        <li>No máximo duas tags, em Fredoka</li>
+        <li>No modo atacado, mostrar preço por unidade e quantidade mínima</li>
+        <li>Preço em Fredoka 600, sempre o elemento mais forte do card</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top:24px">Raios e espaços</h3>
+  <p class="muted">Pílula 999 px (botões, tags) · card 26 px · imagem 18 px · campos 16 px · espaçamento base de 8 px.</p>
+</section>
+
+<section>
+  <h2>Categorias e imagens</h2>
+  <p>As fotos enviadas mostram as categorias principais. Use-as como base da navegação e da página inicial.</p>
+  <div class="cols">
+    <div class="box"><h3>🎀 Acessórios de cabelo</h3><p class="muted">Laços, xuxinhas, prendedores, tiaras</p></div>
+    <div class="box"><h3>👜 Bolsas</h3><p class="muted">Bolsas de mão, ombro e ecobags</p></div>
+    <div class="box"><h3>🥤 Copos e garrafas</h3><p class="muted">Copos térmicos e squeezes</p></div>
+    <div class="box"><h3>🐶 Roupinhas pet</h3><p class="muted">Roupas e casinhas</p></div>
+    <div class="box"><h3>🧸 Pelúcias</h3><p class="muted">Ursos, bichinhos e personagens</p></div>
+  </div>
+  <p style="margin-top:14px">Fotografia: luz quente, produtos agrupados como na prateleira (fartura é parte da marca), fundo creme ou madeira clara. Evite fundo branco frio. Sobre as fotos, use faixas pêssego ou cacau para o texto.</p>
+</section>
+
+<section>
+  <h2>Estrutura da página inicial</h2>
+  <div class="wire">
+    <div>Barra fina: “Atacado a partir de 6 peças” + WhatsApp</div>
+    <div>Cabeçalho: logo, busca, alternador Atacado/Varejo, carrinho</div>
+    <div style="min-height:80px">Destaque: foto da loja ou prateleira + título curto + 2 botões (Comprar no varejo / Pedir no atacado)</div>
+    <div>Categorias em círculos ou cards com ícone de gatinho</div>
+    <div>Novidades: grade de produtos, 2 colunas no celular</div>
+    <div>Como funciona o atacado: 3 passos (aqui a numeração faz sentido)</div>
+    <div>Onde estamos: foto da fachada, endereço, horário, mapa</div>
+    <div>Rodapé em cacau com logo em creme</div>
+  </div>
+</section>
+
+<section>
+  <h2>Voz e textos</h2>
+  <p>Simpática, direta, em português do dia a dia. Frases de comerciante amiga, sem exagero de diminutivos.</p>
+  <div class="cols">
+    <div class="box ok"><h3>Assim</h3><ul><li>Adicionar ao carrinho</li><li>Falar no WhatsApp</li><li>A partir de 6 peças, preço de atacado</li><li>Sem estoque no momento. Avise-me quando chegar</li></ul></div>
+    <div class="box no"><h3>Assim não</h3><ul><li>Submeter pedido</li><li>Produto indisponível</li><li>Textos todos em maiúsculas</li><li>Mais de um emoji por frase</li></ul></div>
+  </div>
+</section>
+
+<section>
+  <h2>Movimento</h2>
+  <p>Um único momento de personalidade: os gatinhos piscam ou balançam no topo da página inicial ao carregar. No resto, só respostas a ações: botão que afunda ao toque, coração que pula ao favoritar, carrinho que recebe o item. Respeitar <code>prefers-reduced-motion</code>.</p>
+</section>
+
+<section>
+  <h2>Tokens CSS</h2>
+  <p>Copie para a raiz do projeto.</p>
+  <div class="scroll"><pre id="tokens">:root{
+  --cacau:#5B4034;   --ouro:#B89A78;
+  --creme:#FFF6EC;   --pessego:#FADCC4;
+  --rosa:#F5A3B5;    --laranja:#F09A4B;
+  --estrela:#FFD64A; --acao:#E8607F;
+
+  --bg:var(--creme); --surface:#fff;
+  --text:#4A3329;    --muted:#8A6F60;
+  --line:#EBD5C0;
+
+  --f-display:'Fredoka',sans-serif;
+  --f-body:'Nunito',sans-serif;
+
+  --r-pill:999px; --r-card:26px;
+  --r-img:18px;   --r-field:16px;
+  --space:8px;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#2A1D17;--surface:#3A2A22;
+        --text:#FBEBDD;--muted:#CDB09C;--line:#55402F;}
+}</pre></div>
+</section>
+
+</main>
+<script>
+(function(){
+  var seg=document.getElementById('seg'),p=document.getElementById('preco'),o=document.getElementById('obs');
+  if(!seg)return;
+  seg.addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b)return;
+    var a=b.getAttribute('data-m')==='a';
+    seg.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+    p.innerHTML=a?'R$ 27,90 <small>unidade</small>':'R$ 39,90 <small>unidade</small>';
+    o.textContent=a?'Mínimo de 6 peças':'Compre 1 ou mais';
+  });
+})();
+</script>
+</body>
+</html>
